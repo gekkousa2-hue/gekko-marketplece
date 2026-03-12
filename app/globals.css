@@ -1,0 +1,144 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  background: linear-gradient(135deg, #0a1428 0%, #1a2847 50%, #0f1a36 100%);
+  background-attachment: fixed;
+  color: #e0e0e0;
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+}
+
+/* Glassmorphism Background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(46, 255, 46, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(95, 140, 255, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+@layer components {
+  .container-alt {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Glassmorphism Effect */
+  .glass {
+    @apply backdrop-blur-md bg-white/[0.05] border border-white/[0.1] rounded-2xl;
+  }
+
+  .glass-dark {
+    @apply backdrop-blur-lg bg-slate-900/[0.4] border border-white/[0.1] rounded-2xl;
+  }
+
+  .glass-glow {
+    @apply glass shadow-glow hover:shadow-glow-lg transition-all duration-300;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply rounded-lg bg-gradient-to-r from-electric-500 to-electric-600 px-6 py-3 font-bold text-black shadow-glow hover:shadow-glow-lg transition-all duration-200 hover:scale-105 active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply glass rounded-lg px-6 py-3 font-semibold text-electric-400 border-2 border-electric-500/30 hover:border-electric-500 hover:text-electric-300 transition-all duration-200 hover:shadow-glow;
+  }
+
+  .btn-outline {
+    @apply rounded-lg border border-white/20 px-4 py-2 text-sm font-medium text-gray-300 shadow-sm transition-all duration-200 hover:bg-white/10 hover:text-electric-400;
+  }
+
+  /* Cards */
+  .card {
+    @apply glass border border-white/[0.1] transition-all duration-300 hover:shadow-neon hover:border-electric-500/30;
+  }
+
+  .card-premium {
+    @apply glass-dark border-2 border-transparent hover:border-electric-500/50 transition-all duration-300 hover:shadow-glow-lg;
+  }
+
+  /* Input Fields */
+  .input-field {
+    @apply glass rounded-xl px-4 py-3 placeholder-gray-500 transition-all duration-200 focus:border-electric-500 focus:outline-none focus:ring-2 focus:ring-electric-500/20 text-white;
+  }
+
+  /* Neon Text */
+  .text-neon {
+    @apply text-electric-400 font-bold;
+  }
+
+  .text-glow {
+    @apply text-electric-400 drop-shadow-lg;
+  }
+
+  /* Scrollbar Styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(10, 20, 40, 0.5);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #2eff2e, #0a3cff);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #52ff50, #1f51ff);
+  }
+}
+
+/* Selection */
+::selection {
+  background: rgba(46, 255, 46, 0.3);
+  color: #2eff2e;
+}
+
+/* Smooth Animations */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(46, 255, 46, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(46, 255, 46, 0.8);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}

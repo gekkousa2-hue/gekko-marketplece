@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "bradlc.vscode-tailwindcss",
+    "orta.vscode-twoslash-queries",
+    "ms-vscode.vscode-typescript-next"
+  ]
+}
